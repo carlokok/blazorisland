@@ -7,7 +7,7 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 var app = builder.Build();
-
+AppEnvironment.ContentRootPath = app.Environment.ContentRootPath;
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -25,3 +25,9 @@ app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 
 app.Run();
+
+
+public static class AppEnvironment
+{
+    public static string ContentRootPath { get; set; } = null!;
+}
